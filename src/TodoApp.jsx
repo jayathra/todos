@@ -1,7 +1,8 @@
 import Box from '@mui/material/Box';
 import { useState, useEffect } from 'react';
 import TodoList from './TodoList';
-import InputField from './InputField'
+import InputField from './InputField';
+import Navbar from './Navbar';
 
 const getInitialTasks = () => {
   const data = JSON.parse(localStorage.getItem('todos'));
@@ -33,17 +34,33 @@ export default function TodoApp() {
   };
 
   return (
-    <div>
-      <h1>TO DO LIST</h1>
-      <TodoList
-        taskList={taskList}
-        setTaskList={setTaskList}
-      />
-      <InputField 
-        task={task} 
-        setTask={setTask}
-        handleKeyDown={handleKeyDown}
-      />
-    </div>
+    <Box sx={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      minHeight: "100vh",          // Full viewport height
+      maxWidth: {                  // Responsive max width
+        xs: "100%",                // Mobile: full width
+        sm: "500px",               // Small screens: 500px
+        md: "600px",               // Medium screens: 600px
+        lg: "700px"                // Large screens: 700px
+      },
+      margin: "0 auto",
+      padding: { xs: 1, sm: 2, md: 3 }, // Responsive padding
+      width: "100%"
+    }}>
+      <Navbar />
+      <Box sx={{ width: "100%", maxWidth: "500px" }}> {/* Constrains inner content */}
+        <TodoList
+          taskList={taskList}
+          setTaskList={setTaskList}
+        />
+        <InputField 
+          task={task} 
+          setTask={setTask}
+          handleKeyDown={handleKeyDown}
+        />
+      </Box>
+    </Box>
   ) 
 }

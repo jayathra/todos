@@ -1,9 +1,9 @@
 import TextField from '@mui/material/TextField';
-import ListItem from '@mui/material/ListItem';
+import { Box } from '@mui/material';
 
 export default function InputField({ task, handleKeyDown, setTask }) {
     return (
-      <ListItem>
+      <Box>
           <TextField
             helperText="Please enter your task and press return"
             id="task"
@@ -12,6 +12,6 @@ export default function InputField({ task, handleKeyDown, setTask }) {
             onChange={(e) => setTask(e.target.value)}
             onKeyDown={(e) => handleKeyDown(e)}
           />
-      </ListItem>
+      </Box>
     );
 }

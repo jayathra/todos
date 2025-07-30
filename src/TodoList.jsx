@@ -1,5 +1,6 @@
 import List from '@mui/material/List';
 import TodoListItem from './todoListItem';
+import { Box } from '@mui/material';
 
 export default function TodoList({ taskList, setTaskList }) {
 
@@ -16,17 +17,19 @@ export default function TodoList({ taskList, setTaskList }) {
     };
 
     return (
-        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-            {taskList.map((task) => {
-                return (
-                    <TodoListItem
-                        key={task.id}
-                        task={task}
-                        onClickHandler={onClickHandler}
-                        handleToggle={handleToggle}
-                    />
-                )
-            })}
-        </List>
+        <Box>
+            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                {taskList.map((task) => {
+                    return (
+                        <TodoListItem
+                            key={task.id}
+                            task={task}
+                            onClickHandler={onClickHandler}
+                            handleToggle={handleToggle}
+                        />
+                    )
+                })}
+            </List>
+        </Box>
     );
 }
