@@ -7,7 +7,7 @@ export default function InputField({ task, handleKeyDown, setTask }) {
           <TextField
             helperText="Please enter your task and press return"
             id="task"
-            label="Task"
+            label="Add Task"
             value={task}
             onChange={(e) => setTask(e.target.value)}
             onKeyDown={(e) => handleKeyDown(e)}

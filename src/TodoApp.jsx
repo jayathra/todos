@@ -22,7 +22,7 @@ export default function TodoApp() {
     if (e.key === 'Enter') {
       if (task.trim()) {
         const newTask = {
-          id: Date.now(),
+          id: crypto.randomUUID(),
           text: task.trim(),
           completed: false
         }
