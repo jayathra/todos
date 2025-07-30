@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import InputField from './InputField.jsx'
+import TodoApp from './TodoApp.jsx'
 import { CssBaseline } from '@mui/material'
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <CssBaseline />
-      <InputField />
+      <TodoApp />
     </>
   )
 }
