@@ -1,19 +1,22 @@
 import Box from '@mui/material/Box';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TodoList from './TodoList';
 import InputField from './InputField'
 
-const initTaskList = [
-  {id: 1, text: "walk the dog", completed: false},
-  {id: 2, text: "walk the cat", completed: false},
-  {id: 3, text: "walk the fish", completed: true},
-  {id: 4, text: "walk the chickens", completed: false}
-]
+const getInitialTasks = () => {
+  const data = JSON.parse(localStorage.getItem('todos'));
+  if (!data) return [];
+  return data;
+}
 
 export default function TodoApp() {
 
   const [task, setTask] = useState("");
-  const [taskList, setTaskList] = useState(initTaskList);
+  const [taskList, setTaskList] = useState(getInitialTasks);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(taskList));
+  }, [taskList]);
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
